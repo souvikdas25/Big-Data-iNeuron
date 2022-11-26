@@ -77,3 +77,54 @@ insert into station VALUES
 (266,'Cahone','CO',116,127);
 
 select * from station;
+
+#Q7
+select city,state from station;
+
+#Q8
+select distinct city from station
+where id%2 = 0;
+
+#Q9
+select count(city) - count(distinct city) as diff from station;
+
+#Q10
+--shortest city name
+select tmp.city,tmp.city_length 
+from (select city,
+length(city) as city_length,
+row_number() over (order by length(city),city) as row_num
+from station)tmp
+where tmp.row_num = 1;
+
+--largest city name
+select tmp.city,tmp.city_length 
+from (select city,
+length(city) as city_length,
+row_number() over (order by length(city) desc,city) as row_num
+from station)tmp
+where tmp.row_num = 1;
+
+#Q11
+select city from station
+where city regexp '^[a,e,i,o,u]'; -- regexp = rlike
+
+#Q12
+select city from station
+where city regexp '[a,e,i,o,u]$';
+
+#Q13
+select city from station
+where city regexp '^[^a,e,i,o,u]';
+
+#Q14
+select city from station
+where city regexp '[^a,e,i,o,u]$';
+
+#Q15
+select city from station
+where city REGEXP 
+
+#Q16
+select city from station
+where city REGEXP 
