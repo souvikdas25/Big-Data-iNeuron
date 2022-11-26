@@ -1,0 +1,45 @@
+-- Sample Dataset 1
+create table if not exists city
+(
+    id int,
+    name varchar(17),
+    countrycode varchar(3),
+    district varchar(20),
+    population int
+);
+
+insert into city values
+(6,'Rotterdam','NLD','Zuid-Holland',593321),
+(3878,'Scottsdale','USA','Arizona',202705),
+(3965,'Corona','USA','California',124966),
+(3973,'Concord','USA','California',121780),
+(3977,'Cedar Rapids','USA','Iowa',120758),
+(3982,'Coral Springs','USA','Florida',117549),
+(4054,'Fairfield','USA','California',92256),
+(4058,'Boulder','USA','Colorado',91238),
+(4061,'Fall River','USA','Massachusetts',90555);
+
+select * from city;
+
+#Q1
+select * from city
+where countrycode = 'USA' and population > 100000;
+
+#Q2
+select name from city
+where countrycode = 'USA' and population > 120000;
+
+#Q3
+select * from city;
+
+#Q4
+select * from city
+where id = 1661;
+
+#Q5
+SELECT * from city
+where countrycode = 'JPN';
+
+#Q6
+SELECT * from city
+where countrycode = 'JPN';
