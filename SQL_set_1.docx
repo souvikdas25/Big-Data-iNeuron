@@ -43,3 +43,37 @@ where countrycode = 'JPN';
 #Q6
 SELECT * from city
 where countrycode = 'JPN';
+
+--Sample Dataset 2
+create table station
+(
+    id int,
+    city varchar(21),
+    state varchar(2),
+    lat_n int,
+    long_w int
+);
+
+insert into station VALUES
+(794,'Kissee Mills','MO',139,73),
+(824,'Loma Mar','CA',48,130),
+(603,'Sandy Hook','CT',72,148),
+(478,'Tipton','IN',33,97),
+(619,'Arlington','CO',75,92),
+(711,'Turner','AR',50,101),
+(839,'Slidell','LA',85,151),
+(411,'Negreet','LA',98,105),
+(588,'Glencoe','KY',46,136),
+(665,'Chelsea','IA',98,59),
+(342,'Chignik Lagoon','AK',103,153),
+(733,'Pelahatchie','MS',38,28),
+(441,'Hanna City','IL',50,136),
+(811,'Dorrance','KS',102,121),
+(698,'Albany','CA',49,80),
+(325,'Monument','KS',70,141),
+(414,'Manchester','MD',73,37),
+(113,'Prescott','IA',39,65),
+(971,'Graettinger','IA',94,150),
+(266,'Cahone','CO',116,127);
+
+select * from station;
