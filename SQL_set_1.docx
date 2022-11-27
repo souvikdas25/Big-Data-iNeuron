@@ -127,7 +127,7 @@ where city REGEXP ?
 
 #Q16
 select city from station
-where city REGEXP ?
+where city REGEXP '^[^a,e,o,i,u]+[a-z]+[^a,e,o,i,u]$'
 
 create database sqlset1;
 use sqlset1;
@@ -412,5 +412,68 @@ FROM
 row_number() over (partition by player_id order by event_date) as row_num
 from activity)tmp
 where tmp.row_num = 1;
+
+#Q26
+create table products
+(
+    product_id int primary key,
+    product_name varchar(50),
+    product_category varchar(10)
+);
+
+create table orders
+(
+    product_id int,
+    order_date date,
+    unit int
+);
+
+insert into products values
+(1,'Leetcode Solutions','Book'),
+(2,'Jewels of Stringology','Book'),
+(3,'HP','Laptop'),
+(4,'Lenovo','Laptop'),
+(5,'Leetcode Kit','T-shirt');
+
+insert into orders VALUES
+(1,'2020-02-05',60),
+(1,'2020-02-10',70),
+(2,'2020-01-18',30),
+(2,'2020-02-11',80),
+(3,'2020-02-17',2),
+(3,'2020-02-24',3),
+(4,'2020-03-01',20),
+(4,'2020-03-04',30),
+(4,'2020-03-04',60),
+(5,'2020-02-25',50),
+(5,'2020-02-27',50),
+(5,'2020-03-01',50);
+
+select P.product_name,sum(O.unit) as sum_unit
+from products P
+inner join orders O on P.product_id = O.product_id
+where date_format(O.order_date,'%Y%m') = 202002
+group by P.product_id
+having sum(O.unit) >= 100;
+
+#Q27
+create table users
+(
+    user_id int primary key,
+    name varchar(50),
+    mail varchar(50)
+);
+
+insert into users VALUES
+(1,'Winston','winston@leetcode.com'),
+(2,'Jonathan','jonathanisgreat'),
+(3,'Annabelle','bella-@leetcode.com'),
+(4,'Sally','sally.come@leetcode.com'),
+(5,'Marwan','quarz#2020@leetcode.com'),
+(6,'David','david69@gmail.com'),
+(7,'Shapiro','.shapo@leetcode.com');
+
+select * from users
+where mail regexp '^[a-zA-Z]+[a-zA-Z0-9_.-]+@leetcode.com$';
 
 
